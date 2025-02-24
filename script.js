@@ -9,12 +9,12 @@ container.onmousemove = (e) => {
   mousePos.x = e.pageX;
   mousePos.y = e.pageY;
 };
-trollDiv.onmouseover = () => {
-  trollDiv.src = "./trolling_face.png";
+
+const trollPos = {
+  x: 0,
+  y: 0,
 };
-// trollDiv.onmouseleave = ()=>{
-//     trollDiv.src = "./trollface.png";
-// }
+
 const randomSeed = Math.random();
 const trollIdleSpeed = 5;
 const trollRunSpeed = 10;
@@ -25,11 +25,10 @@ let trollDir = {
 };
 
 function mouseDistance(rect) {
-    let x = rect.left + rect.width / 2;
-    let y = rect.top + rect.height / 2;
-    return { x: x - mousePos.x, y: y - mousePos.y };
-  }
-  
+  let x = rect.left + rect.width / 2;
+  let y = rect.top + rect.height / 2;
+  return { x: x - mousePos.x, y: y - mousePos.y };
+}
 
 function getTrollDir() {
   let trollRect = trollDiv.getBoundingClientRect();
@@ -44,10 +43,10 @@ function getTrollDir() {
     };
     trollSpeed = Math.pow(trollRect.width - dist, 1);
     trollDiv.className = "running";
-    container.style.background = "#CE0E0E4D"
+    container.style.background = "#CE0E0E4D";
   } else {
-    trollDiv.className ="";
-    container.style.background = "transparent"
+    trollDiv.className = "";
+    container.style.background = "transparent";
   }
   //get bound
   if (
@@ -62,19 +61,15 @@ function getTrollDir() {
   ) {
     trollDir = { x: -trollDir.x, y: trollDir.y };
   }
-  return trollSpeed
+  return trollSpeed;
 }
 
 function moveTroll() {
   let trollSpeed = getTrollDir();
-  trollDiv.style.left = `${Math.round(
-    trollDiv.offsetLeft + trollSpeed * trollDir.x
-  )}px`;
-  trollDiv.style.top = `${Math.round(
-    trollDiv.offsetTop+ trollSpeed * trollDir.y
-  )}px`;
+  trollPos.x = Math.round(trollPos.x + trollSpeed * trollDir.x);
+  trollPos.y = Math.round(trollPos.y + trollSpeed * trollDir.y);
+  trollDiv.style.transform = `translate(${trollPos.x}px,${trollPos.y}px)`;
 }
-
 
 let raf;
 function loop() {
