@@ -67,7 +67,6 @@ function getTrollDir() {
 
 function moveTroll() {
   let trollSpeed = getTrollDir();
-  console.log(trollSpeed)
   trollDiv.style.left = `${Math.round(
     trollDiv.offsetLeft + trollSpeed * trollDir.x
   )}px`;
