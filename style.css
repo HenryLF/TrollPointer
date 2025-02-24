@@ -1,0 +1,14 @@
+body{
+    margin: 0
+}
+
+#container{
+    height: 100vh;
+    width: 100vw;
+    transition: background-color .5s;
+}
+
+#troll{
+    position: relative;
+    width: 5%;
+}
