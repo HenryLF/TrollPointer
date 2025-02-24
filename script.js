@@ -43,10 +43,10 @@ function getTrollDir() {
       y: vect.y / dist,
     };
     trollSpeed = Math.pow(trollRect.width - dist, 1);
-    trollDiv.src = "./trolling_face.png";
+    trollDiv.className = "running";
     container.style.background = "#CE0E0E4D"
   } else {
-    trollDiv.src = "./trollface.png";
+    trollDiv.className ="";
     container.style.background = "transparent"
   }
   //get bound

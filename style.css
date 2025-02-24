@@ -11,4 +11,12 @@ body{
 #troll{
     position: relative;
     width: 5%;
+    aspect-ratio: 1/1;
+    background-image: url("./trollface.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#troll.running{
+    background-image: url("./trolling_face.png");
 }
